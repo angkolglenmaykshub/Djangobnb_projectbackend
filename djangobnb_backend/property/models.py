@@ -11,7 +11,7 @@ from useraccount.models import User
 
 
 class Property(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, serialize=True)
     title = models.CharField(max_length=255)
     description = models.TextField()
     price_per_night = models.IntegerField()
@@ -28,4 +28,7 @@ class Property(models.Model):
 
 
     def image_url(self):
-        return f'{settings.WEBSITE_URL}{self.image.url}'
+        if self.image:
+            return f'{settings.WEBSITE_URL}{self.image.url}'
+        
+        return ''

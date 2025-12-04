@@ -42,7 +42,7 @@ SIMPLE_JWT = {
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": True,
     "SIGNING_KEY": "acomplexkey",
-    "ALOGRIGTHM": "HS512",
+    "ALGORITHM": "HS512",
 }
 
 
@@ -94,27 +94,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django.contrib.sites',
 
      'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
 
-
     'allauth',
     'allauth.account',
-
 
     'dj_rest_auth',
     'dj_rest_auth.registration',
 
-
     'corsheaders',
-
 
     'useraccount',
     'property',
-
 
 ]
 
