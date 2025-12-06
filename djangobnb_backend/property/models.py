@@ -1,9 +1,13 @@
 import uuid
 
+
 from django.conf import settings
 from django.db import models
 
+
 from useraccount.models import User
+
+
 
 
 class Property(models.Model):
@@ -17,7 +21,7 @@ class Property(models.Model):
     country = models.CharField(max_length=255)
     country_code = models.CharField(max_length=10)
     category = models.CharField(max_length=255)
-    # favorited = models.ManyToManyField(User, related_name='favorites', blank=True)
+    favorited = models.ManyToManyField(User, related_name='favorites', blank=True)
     image = models.ImageField(upload_to='uploads/properties')
     landlord = models.ForeignKey(User, related_name='properties', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -25,6 +29,8 @@ class Property(models.Model):
 
     def image_url(self):
         return f'{settings.WEBSITE_URL}{self.image.url}'
+
+
 
 
 class Reservation(models.Model):
