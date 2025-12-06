@@ -31,6 +31,21 @@ def properties_detail(request, pk):
     property = Property.objects.get(pk=pk)
 
 
+
+
+     #
+    # Filter
+    landlord_id = request.GET.get('landlord_id', '')
+
+
+    if landlord_id:
+        properties = properties.filter(landlord_id=landlord_id)
+
+
+    #
+    #
+
+
     serializer = PropertiesDetailSerializer(property, many=False)
 
 
